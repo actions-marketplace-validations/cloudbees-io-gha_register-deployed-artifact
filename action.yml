@@ -22,7 +22,7 @@ inputs:
     description: 'The URL of the artifact being deployed. Required when artifact-id is not provided.'
     required: false
   job-id:
-    description: 'The ID of the job to associate the evidence with.'
+    description: 'The ID of the job to associate the deployment with.'
     required: false
     default: ${{ job.check_run_id }}
   
