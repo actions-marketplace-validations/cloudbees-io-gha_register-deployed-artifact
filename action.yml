@@ -21,13 +21,18 @@ inputs:
   artifact-url:
     description: 'The URL of the artifact being deployed. Required when artifact-id is not provided.'
     required: false
+  job-id:
+    description: 'The ID of the job to associate the deployment with.'
+    required: false
+    default: ${{ job.check_run_id }}
   
 runs:
   using: "docker"
-  image: "docker://public.ecr.aws/l7o7z1g8/actions/gha-register-deployed-artifact:main-8d819ee6c37734d240bc3e399c7515d85aa14f76"
+  image: "docker://public.ecr.aws/l7o7z1g8/actions/gha-register-deployed-artifact:main-c13813fbae7c37c594898cf9e0714d18188b5e01"
   env:
     CLOUDBEES_API_URL: ${{ inputs.cloudbees-url }}    
     TARGET_ENVIRONMENT: ${{ inputs.target-environment }}
     DEPLOYMENT_LABELS: ${{ inputs.labels }}
     ARTIFACT_ID: ${{ inputs.artifact-id }}
-    ARTIFACT_URL: ${{ inputs.artifact-url }}    
+    ARTIFACT_URL: ${{ inputs.artifact-url }}
+    JOB_CHECK_RUN_ID: ${{ inputs.job-id }}
